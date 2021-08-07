@@ -1,0 +1,12 @@
+#include <iostream>
+using namespace std;
+
+int main()
+{
+   int i=0,j=0;
+   int *p = &i,*q = &j;
+   q=p;//address of p is assigned to address of q
+   *q=2;//its means value of i is 2
+   cout<<i<<j;// here j is simply 0 
+}
+//so answer is 20
