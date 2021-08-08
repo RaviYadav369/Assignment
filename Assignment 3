@@ -1,0 +1,73 @@
+////Adding Node at the beginning and end of linked list////
+#include<iostream>
+#include<stdlib.h>
+using namespace std;
+struct Node {
+  int data;
+  struct Node *next;
+};
+struct Node *create(int);
+struct Node *insert_beg(struct Node *head,int );
+struct Node *insert_end(struct Node *head,int );
+void display(struct Node *head);
+
+int main()
+{
+    struct Node * head=NULL;
+    head=insert_beg(head,10);
+    head=insert_beg(head,20);
+    head=insert_beg(head,30);
+    display(head);
+    cout<<"\n";
+    head=insert_end(head,10);
+    head=insert_end(head,20);
+    head=insert_end(head,30);
+    display(head);
+}
+struct Node * create(int item)
+{
+  struct Node * npt = new Node;
+  npt->data=item;
+  npt->next = NULL;
+  return npt;
+}
+struct Node *insert_beg(struct Node *head,int data)
+{
+ struct Node *np=create(data);
+  if(!head)
+  {head=np;
+  return head;}
+  np->next = head;
+  head=np;
+  return head;
+}
+void display(struct Node *head)
+{
+  if(!head)
+  {cout<<"list is empty";
+ }
+struct Node *temp = head;
+cout<<"list is :";
+while(temp != NULL)
+{cout<< temp -> data<<" ";
+temp=temp -> next;}
+}
+struct Node *insert_end(struct Node *head,int x)
+{
+  struct Node *np = create(x);
+  if(!head)
+  {head=np;
+  return head;
+  }
+  else{
+  struct Node *temp = head;
+while(temp->next)
+{temp=temp->next;
+ }
+temp->next=np;
+return head;
+}
+}
+
+Output list is :30 20 10 
+       list is :30 20 10 10 20 30 
