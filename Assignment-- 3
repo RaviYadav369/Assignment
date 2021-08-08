@@ -83,7 +83,7 @@ return head;
 Output  list is :30 20 10 
         list is :30 20 10 10 20 30
  
-////Deleteing Node in linked list at beginning///
+////Deleteing Node in linked list at beginning and end///
 
 #include<iostream>
 #include<stdlib.h>
@@ -107,8 +107,12 @@ int main()
     head=insert_beg(head,40);
     display(head);
     cout<<"\n";
-    cout<<"Afte Deleting ";
+    cout<<"Afte Deleting from beginning ";
     head=delete_beg(head);
+    display(head);
+    cout<<"\n";
+    cout<<"After deleting from end";
+    head=delete_end(head);
     display(head);
 }
 struct Node * create(int item)
@@ -148,6 +152,30 @@ struct Node *delete_beg(struct Node *head)
   return np;
  }
   }
+struct Node *delete_end(struct Node *head)
+{
+  struct Node *ptr=head,*ptr1;
+	if(head->next==NULL)
+    {   ptr=head;
+	head=NULL;
+	free(ptr);
+	return head;
+	}
+	
+else
+{
+	ptr=head;
+	while(ptr->next!=NULL)
+	{
+	  ptr1=ptr;
+	  ptr=ptr->next;
+	}
+	  ptr1->next=NULL;
+	  free(ptr);
+	  return head;
+	}
+}
 
 Output list is :40 30 20 10 
-  After deleting list is :30 20 10 
+After deleting from beginning list is :30 20 10 
+After deleting from end list is :30 20 
